@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Eloria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Meta Tags ESSENTIELS -->
+    <title>Eloria ✨ | Découvre ton univers intérieur</title>
+    <meta name="description" content="Plateforme de développement personnel pour adolescentes. Tests de personnalité, articles inspirants, espace bienveillant pour mieux se connaître.">
+    
+    <!-- Keywords (encore utiles) -->
+    <meta name="keywords" content="développement personnel, adolescentes, tests personnalité, confiance en soi, relations, psychologie, bien-être, eloria">
+    
+    <!-- Open Graph (pour partage sur réseaux) -->
+    <meta property="og:title" content="Eloria ✨ | Découvre ton univers intérieur">
+    <meta property="og:description" content="Plateforme de développement personnel pour adolescentes">
+    <meta property="og:image" content="https://[ton-url]/preview-image.jpg">
+    <meta property="og:url" content="https://[ton-url]">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eloria ✨">
+    <meta name="twitter:description" content="Développement personnel pour adolescentes">
+    
+    <!-- Important pour SEO -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://[ton-url]">
+    <style>
+        /* RESET ET VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --beige-clair: #FAF4EF;
+            --lavande: #D8C4E2;
+            --rose-pastel: #F6E8EB;
+            --rose-doux: #C39EA0;
+            --noir-profond: #1A1A1A;
+            --blanc: #FFFFFF;
+            --gris-clair: #F5F5F5;
+            --transition: all 0.3s ease-in-out;
+            --ombre-legere: 0px 4px 12px rgba(0,0,0,0.1);
+            --ombre-moyenne: 0px 8px 24px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: var(--beige-clair);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--beige-clair);
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--noir-profond);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--rose-doux);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--rose-doux);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .back-to-home {
+            color: var(--rose-doux);
+            font-weight: 600;
+        }
+
+        .back-to-home:hover {
+            color: var(--lavande);
+        }
+
+        /* SECTION ARTICLES */
+        .articles-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: var(--noir-profond);
+        }
+
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .article-card {
+            background-color: var(--blanc);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--ombre-legere);
+            transition: var(--transition);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(216, 196, 226, 0.3);
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--ombre-moyenne);
+        }
+
+        .article-card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .article-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--noir-profond);
+        }
+
+        .article-card-desc {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .article-card-meta {
+            font-size: 14px;
+            color: var(--rose-doux);
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        /* SECTION ARTICLE DÉTAILLÉ */
+        .article-detail {
+            padding: 80px 0;
+            display: none;
+        }
+
+        .article-hero {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .article-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        .article-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--noir-profond);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .article-description {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .content-titre {
+            font-size: 28px;
+            margin: 40px 0 20px;
+            color: var(--noir-profond);
+        }
+
+        .content-sous-titre {
+            font-size: 20px;
+            font-style: italic;
+            margin: 30px 0 15px;
+            color: var(--rose-doux);
+            border-bottom: 1px solid var(--lavande);
+            padding-bottom: 5px;
+        }
+
+        .content-paragraphe {
+            font-size: 17px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 25px;
+            color: #444;
+            padding: 15px 0;
+        }
+
+        .article-secondary-img {
+            width: 300px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: var(--ombre-legere);
+        }
+
+        .article-author {
+            background-color: var(--rose-pastel);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--lavande);
+        }
+
+        .author-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--noir-profond);
+        }
+
+        .author-bio {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .author-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--lavande);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanc);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--rose-doux);
+            transform: translateY(-3px);
+        }
+
+        .back-to-articles {
+            display: inline-block;
+            margin-top: 40px;
+            color: var(--rose-doux);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .back-to-articles:hover {
+            color: var(--lavande);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--noir-profond);
+            color: var(--blanc);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: var(--rose-doux);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--rose-doux);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--rose-doux);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .articles-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .article-card-img {
+                height: 200px;
+            }
+            
+            .article-card-content {
+                padding: 20px;
+            }
+            
+            .article-card-title {
+                font-size: 20px;
+            }
+            
+            .article-hero {
+                height: 300px;
+            }
+            
+            .article-title {
+                font-size: 28px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .article-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-social {
+                justify-content: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 26px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">ELORIA</div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="test.html">Quiz</a></li>
+                <li><a href="article.html">Articles</a></li>
+                <li><a href="community.html">Communauté</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <a href="index.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i> Retour à l'accueil
+        </a>
+    </header>
+
+    <!-- SECTION ARTICLES -->
+    <section class="articles-section">
+        <div class="container">
+            <h2 class="section-title">Nos Articles Inspirants</h2>
+            <div class="articles-container" id="articles-list">
+                <!-- Les articles seront chargés dynamiquement ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION ARTICLE DÉTAILLÉ (cachée par défaut) -->
+    <section class="article-detail" id="article-detail-section">
+        <div class="container">
+            <a href="#" class="back-to-articles" id="back-to-articles-btn">
+                <i class="fas fa-arrow-left"></i> Retour aux articles
+            </a>
+            <div id="article-detail-content">
+                <!-- Le contenu de l'article sera chargé dynamiquement ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="article.html">Articles</a></li>
+                        <li><a href="test.html">Quiz</a></li>
+                        <li><a href="community.html">Communauté</a></li>
+                        <li><a href="vision.html">Vision</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:contact@eloria.com">babehoansima@gmail.com</a></li>
+                        
+                       
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>À propos</h3>
+                    <ul>
+                        <li><a href="vision.html">Notre mission</a></li>
+                        <li><a href="#">Équipe</a></li>
+                        <li><a href="#">Blog</a></li>
+                    
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Réseaux sociaux</h3>
+                    <p>Rejoins la communauté Eloria</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                                 </div>
+                    <a href="#" class="btn" style="margin-top: 20px;">Rejoindre Eloria</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026
+                Eloria. babehoansima@gmail.com.Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHARGEMENT DU FICHIER article.js -->
+    <script src="article.js"></script>
+    
+    <script>
+        // Initialisation de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArticles();
+            
+            // Gestion du bouton retour aux articles
+            document.getElementById('back-to-articles-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showArticlesList();
+            });
+        });
+
+        // Chargement des articles depuis article.js
+        function loadArticles() {
+            const articlesList = document.getElementById('articles-list');
+            
+            if (!articlesList || !window.articlesData) return;
+            
+            // Vider la liste actuelle
+            articlesList.innerHTML = '';
+            
+            // Créer les cartes d'articles
+            window.articlesData.forEach(article => {
+                const articleCard = document.createElement('div');
+                articleCard.className = 'article-card';
+                articleCard.innerHTML = `
+                    <img src="${article.imageCarte}" alt="${article.titre}" class="article-card-img">
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">${article.titre}</h3>
+                        <p class="article-card-desc">${article.description}</p>
+                        <div class="article-card-meta">
+                            <span><i class="fas fa-user"></i> ${article.auteur}</span>
+                            <span><i class="far fa-calendar"></i> ${article.date}</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Ajouter l'événement de clic
+                articleCard.addEventListener('click', () => showArticleDetail(article.id));
+                
+                articlesList.appendChild(articleCard);
+            });
+        }
+
+        // Affichage du détail d'un article
+        function showArticleDetail(articleId) {
+            const article = window.articlesData.find(a => a.id === articleId);
+            
+            if (!article) {
+                console.error('Article non trouvé');
+                return;
+            }
+            
+            const articleDetailContent = document.getElementById('article-detail-content');
+            
+            // Construire le contenu de l'article
+            let contentHTML = `
+                <img src="${article.imageHero}" alt="${article.titre}" class="article-hero">
+                
+                <div class="article-intro">
+                    <h1 class="article-title">${article.titre}</h1>
+                    <div class="article-meta">
+                        <span><i class="fas fa-user"></i> ${article.auteur}</span>
+                        <span><i class="far fa-calendar"></i> ${article.date}</span>
+                    </div>
+                    <p class="article-description">${article.description}</p>
+                </div>
+                
+                <img src="${article.imageSecondaire}" alt="Image secondaire" class="article-secondary-img">
+                
+                <div class="article-content">
+            `;
+            
+            // Ajouter le contenu structuré
+            article.contenu.forEach(section => {
+                switch(section.type) {
+                    case 'titre':
+                        contentHTML += `<div class="content-section"><h2 class="content-titre">${section.texte}</h2></div>`;
+                        break;
+                    case 'sous-titre':
+                        contentHTML += `<h3 class="content-sous-titre">${section.texte}</h3>`;
+                        break;
+                    case 'paragraphe':
+                        contentHTML += `<p class="content-paragraphe">${section.texte}</p>`;
+                        break;
+                }
+            });
+            // Ajouter la section auteur
+            contentHTML += `
+                </div>
+                
+                <div class="article-author">
+                    
+                    <div class="author-info">
+                        <h3>À propos de ${article.auteur}</h3>
+                        <p class="author-bio">${article.auteurBio || 'Expert en développement personnel et bien-être.'}</p>
+                        
+                    </div>
+                </div>
+            `;
+            
+            articleDetailContent.innerHTML = contentHTML;
+            
+            // Afficher la section détail et cacher la liste
+            document.querySelector('.articles-section').style.display = 'none';
+            document.getElementById('article-detail-section').style.display = 'block';
+            
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Retour à la liste des articles
+        function showArticlesList() {
+            document.querySelector('.articles-section').style.display = 'block';
+            document.getElementById('article-detail-section').style.display = 'none';
+            
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
